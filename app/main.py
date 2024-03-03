@@ -8,7 +8,7 @@ COMPARISION_ALLOWABLE = ["foxp1", "foxp4"]
 
 
 class Model:
-    @staticmethod
+    @classmethod
     def predict_mutation_effect(cls, mutation):
         '''
         Load all wild type sequesnces associated with foxp1 and its neighbours
@@ -65,7 +65,7 @@ class Model:
             }
         return mutation_bonding_factors
 
-    @staticmethod
+    @classmethod
     def exceute_all(cls):
         # Predict effect of mutation
         data = util.read_text_data()
@@ -83,7 +83,7 @@ class Model:
             }
             print(results)
 
-    @staticmethod
+    @classmethod
     def exceute(cls, mutation):
         # Predict effect of mutation
         data = util.read_text_data()
@@ -106,4 +106,3 @@ class Model:
     def get_mutations():
         data = util.read_text_data()
         return [line["mutation"] for line in data]
-        
