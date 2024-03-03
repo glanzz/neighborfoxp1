@@ -31,5 +31,7 @@ Note: Requires python >=3.12
     npm start
   </pre>
 
-
+### SnapShots
+<img width="1461" alt="Screenshot 2024-03-03 at 1 38 15 PM" src="https://github.com/glanzz/neighborfoxp1/assets/60913501/71bdfefa-b963-483b-ae9f-0d168c688a3b">
+<img width="1462" alt="Screenshot 2024-03-03 at 1 43 45 PM" src="https://github.com/glanzz/neighborfoxp1/assets/60913501/49b87817-1a45-43d3-ba55-97e902df80db">
 
