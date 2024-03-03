@@ -4,24 +4,30 @@ from app.read_fasta import load_sequence_from_fasta
 from app.generate_structure import get_mutation
 
 FOXP1_FASTA_FILE = "app/sequence.fasta" 
-COMPARISION_ALLOWABLE = ["foxp1", "foxp4"]
+#COMPARISION_ALLOWABLE = ["foxp1", "foxp4", "gatad2b", "il2", "csf1r", "blm"]
+COMPARISION_ALLOWABLE = ["foxp1", "foxp4", "gatad2b", "il2", "csf1r", "blm"]
+#COMPARISION_ALLOWABLE = ["aurka", "myh10"]
+
 
 
 class Model:
     @classmethod
-    def predict_mutation_effect(cls, mutation):
+    def predict_mutation_effect(cls, mutation, genes):
         '''
-        Load all wild type sequesnces associated with foxp1 and its neighbours
+        Load all wild type sequesnces associated with foxp1 and its neighbors
         Get the correlation metrics for all of by comparing the sequence with the other ones
         compare it with the actual foxp1 standard
         Determine the observability and its changes due to this
         '''
         mutation_bonding_factors = {}
-        for allowable_comparator in COMPARISION_ALLOWABLE:
+        print("Loading Mutating...")
+        mutant_sequence = get_mutation(mutation, FOXP1_FASTA_FILE)
+        print("Sequence Mutated!")
+        for allowable_comparator in (COMPARISION_ALLOWABLE if not genes else genes):
+            print(f"Loading comparing sequence {allowable_comparator}...")
             file_name = f"app/{allowable_comparator}.fasta"
 
             wild_type_sequence = load_sequence_from_fasta(file_name)
-            mutant_sequence = get_mutation(mutation, FOXP1_FASTA_FILE)
 
             changing_positions = []
             for i in range(len(wild_type_sequence.seq)):
@@ -34,11 +40,12 @@ class Model:
             dna_binding_effect = 0
             for motif in util.get_motifs():
                 dna_binding_effect += util.get_binding_affinity(wild_type_sequence.seq, mutant_sequence=mutant_sequence.seq, binding_motif=motif)
+            print("Generating alignment scores...")
             try:
                 alignment_score, percent_identity = attributing_util.get_sequence_aligment_identity(wild_type_sequence.seq, mutant_sequence.seq)
             except:
                 alignment_score, percent_identity = 0,0
-
+            print("Generating GC scores...")
             original_gc_content = attributing_util.GC(mutant_sequence)
             wild_type_sequence_gc_content = attributing_util.GC(wild_type_sequence)
             
@@ -47,6 +54,7 @@ class Model:
             #dimerization_effect = ppi.predict_dimerization_effect(wild_type_structure, mutant_structure)
             #interaction_effect = ppi.predict_interaction_effect(wild_type_structure, mutant_structure)
             
+            print("Generating Attributes...")
             mutation_bonding_factors[allowable_comparator] = {
                 "DNA BINDING_EFFECT": dna_binding_effect,
                 "CHANGING_POSITIONS": changing_positions,
@@ -84,11 +92,11 @@ class Model:
             print(results)
 
     @classmethod
-    def exceute(cls, mutation):
+    def exceute(cls, mutation, genes=None):
         # Predict effect of mutation
         data = util.read_text_data()
         attributes = {}
-        attributes = cls.predict_mutation_effect(mutation)
+        attributes = cls.predict_mutation_effect(mutation, genes)
         severe = ""
         for line in data:
             if line["mutation"] == mutation:
@@ -96,7 +104,7 @@ class Model:
 
         # Output results
         return {
-            "VARIANT": line["mutation"],
+            "VARIANT": mutation,
             "ATTRIBUTES": attributes,
             "OBSERVATIONS": {
                 "Severe": severe,
