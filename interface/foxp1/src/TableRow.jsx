@@ -53,7 +53,7 @@ const TableRow = ({data: Data}) => {
     <table className="table">
       <thead>
         <tr>
-          <th>Neighbours</th>
+          <th>Neighbors</th>
           <th>DNA Affinity</th>
           {/*<th>Change Positions</th>*/}
           <th>Alignment Score</th>

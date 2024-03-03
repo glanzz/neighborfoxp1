@@ -1,7 +1,7 @@
 {
-  "name": "neighbourfoxp1",
+  "name": "neighborfoxp1",
   "version": "1.0.0",
-  "description": "Visualize foxp1 variants alongside foxp1 neighbours",
+  "description": "Visualize foxp1 variants alongside foxp1 neighbors",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

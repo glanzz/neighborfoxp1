@@ -1,3 +1,3 @@
-# Neighbour FoxP1
+# Neighbor FoxP1
 
 Visualize variants of FoxP1
