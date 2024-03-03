@@ -1,0 +1,158 @@
+
+
+
+body {
+  font-family: "Montserrat", serif;
+  background-image: url('/public/background.avif');
+  background-size: cover;
+  color: #000000;
+  
+}
+nav {
+  text-align: center;
+  position: relative;
+}
+.title {
+  font-weight: 200;
+}
+.container {
+  margin: auto;
+  background-color: #b4b4b47d;
+  max-width: 800px;
+  border-radius: 20px;
+  padding: 20px;
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+#content-container {
+  padding: 20px;
+  margin-top: 30px;
+  margin-bottom: 100px;
+}
+
+
+button {
+  border: 0;
+  margin: 0;
+  cursor: pointer;
+  color: #f7f7f7;
+  background-color: rgb(167 167 167 / 92%);
+  border-radius: 12px;
+  padding: 9px 28px;
+  font-size: 14px;
+  margin-left: 15px;
+  box-shadow: 10px 6px 8px #c4cfcf;
+}
+button:hover {
+  color: #717171;
+  background-color: #b4b4b47d;
+}
+
+h2 {
+  font-weight: 400;
+  margin: 2px 0px;
+}
+
+h4 {
+  font-weight: 200;
+  margin-bottom: 12px;
+}
+
+input:checked {
+  accent-color: #000000;
+}
+
+
+.logo {
+  width: 80px;
+  height: 80px;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 999;
+  object-fit: contain;
+  filter: grayscale(0.8);
+}
+
+.header {
+  position: fixed;
+  top: 50px;
+  left: 120px;
+}
+.header > input {
+  padding: 8px 12px;
+  width: 250px;
+  border: 0;
+  border-radius: 10px;
+  box-shadow: 10px 6px 8px #c4cfcf;
+  color: #0e0e0e;
+}
+
+.content {
+  margin-top: 120px;
+  padding: 20px;
+}
+
+.highlight {
+  border: 1 px solid gray;
+  border-radius: 10px;
+  box-shadow: 10px 6px 8px #c4cfcf;
+  background-color: #0e0e0e;
+  color: white;
+  padding: 10px;
+  display: inline;
+  font-weight: bold;
+}
+
+
+.table {
+  padding: 10px;
+  text-align: center;
+  table-layout: fixed;
+  border-radius: 12px;
+  background: #ffffff52;
+  border-spacing: 50px;
+
+}
+
+.table td, th {
+  padding: 10px;
+  border-radius: 18px;
+}
+
+.flex {
+  margin-top: 30px;
+}
+.flex > div {
+  margin-top: 30px;
+}
+
+
+.index-1 {
+  background-color: #b4b4b4;
+}
+.index0 {
+  background-color: #acacac;
+}
+.index1 {
+  background-color: #989898;
+}
+.index2 {
+  background-color: #878787;
+}
+.index3 {
+  background-color: #717171;
+}
+.index4 {
+  background-color: #636262;
+}
+.index5 {
+  background-color: #5e5e5e;
+}
+.index6 {
+  background-color: #4d4d4d;
+}
+.index7 {
+  background-color: #3e3e3e;
+}
