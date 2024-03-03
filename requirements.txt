@@ -1,0 +1,9 @@
+pandas
+numpy
+scikit-learn
+biopython
+Bio
+hgvs
+scipy
+flask
+flask-restful
